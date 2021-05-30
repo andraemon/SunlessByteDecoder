@@ -23,17 +23,17 @@ namespace SunlessByteDecoder
             {
                 if (args.Length == 1)
                 {
-                    if (args[0].StartsWith("--decrypt="))
+                    if (args[0].StartsWith("--deserialize="))
                     {
-                        if (args[0].EndsWith(".bytes")) BytesToJsonFile(args[0][10..]);
+                        if (args[0].EndsWith(".bytes")) BytesToJsonFile(args[0][14..]);
                         else if (args[0].EndsWith(".json"))
                         {
                             Console.WriteLine("Wrong file extension!");
                             success = false;
                         }
-                        else BytesToJsonDirectory(args[0][10..]);
+                        else BytesToJsonDirectory(args[0][14..]);
                     }
-                    else if (args[0].StartsWith("--encrypt="))
+                    else if (args[0].StartsWith("--serialize="))
                     {
                         if (args[0].EndsWith(".json")) { }
                         else if (args[0].EndsWith(".bytes"))
