@@ -26,21 +26,13 @@ namespace SunlessByteDecoder
                     if (args[0].StartsWith("--deserialize="))
                     {
                         if (args[0].EndsWith(".bytes")) BytesToJsonFile(args[0][14..]);
-                        else if (args[0].EndsWith(".json"))
-                        {
-                            Console.WriteLine("Wrong file extension!");
-                            success = false;
-                        }
+                        else if (args[0].EndsWith(".json")) Error("Wrong file extension!", ref success);
                         else BytesToJsonDirectory(args[0][14..]);
                     }
                     else if (args[0].StartsWith("--serialize="))
                     {
                         if (args[0].EndsWith(".json")) { }
-                        else if (args[0].EndsWith(".bytes"))
-                        {
-                            Console.WriteLine("Wrong file extension!");
-                            success = false;
-                        }
+                        else if (args[0].EndsWith(".bytes")) Error("Wrong file extension!", ref success);
                         else { }
                     }
                     else if (args[0].EndsWith(".bytes"))
@@ -59,21 +51,11 @@ namespace SunlessByteDecoder
                 {
                     BytesToJsonDirectory(AppDomain.CurrentDomain.BaseDirectory);
                 }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Arguments formatted incorrectly!");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    success = false;
-                }
+                else Error("Arguments formatted incorrectly!", ref success);
             }
             catch (Exception e)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("An unhandled exception occurred:");
-                Console.WriteLine(e);
-                Console.ForegroundColor = ConsoleColor.White;
-                success = false;
+                Error($"An unhandled exception occurred: \n{e}", ref success);
             }
 
             if (success) Console.WriteLine("Conversion successful, press any key to exit...");
@@ -191,6 +173,14 @@ namespace SunlessByteDecoder
         private static void JsonToBytesFile(string path)
         {
 
+        }
+
+        private static void Error(string message, ref bool success)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+            success = false;
         }
     }
 }
