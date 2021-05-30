@@ -18,7 +18,6 @@ namespace SunlessByteDecoder
         public static void Main(string[] args)
         {
             bool success = true;
-            string cmd;
 
             try
             {
@@ -26,11 +25,23 @@ namespace SunlessByteDecoder
                 {
                     if (args[0].StartsWith("--decrypt="))
                     {
-                        cmd = args[0].Remove(0, 10);
+                        if (args[0].EndsWith(".bytes")) BytesToJsonFile(args[0][10..]);
+                        else if (args[0].EndsWith(".json"))
+                        {
+                            Console.WriteLine("Wrong file extension!");
+                            success = false;
+                        }
+                        else BytesToJsonDirectory(args[0][10..]);
                     }
                     else if (args[0].StartsWith("--encrypt="))
                     {
-                        cmd = args[0].Remove(0, 10);
+                        if (args[0].EndsWith(".json")) { }
+                        else if (args[0].EndsWith(".bytes"))
+                        {
+                            Console.WriteLine("Wrong file extension!");
+                            success = false;
+                        }
+                        else { }
                     }
                     else if (args[0].EndsWith(".bytes"))
                     {
@@ -170,6 +181,16 @@ namespace SunlessByteDecoder
                     default: return;
                 }
             }
+        }
+
+        private static void JsonToBytesDirectory(string path)
+        {
+
+        }
+
+        private static void JsonToBytesFile(string path)
+        {
+
         }
     }
 }
