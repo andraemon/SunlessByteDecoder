@@ -54,6 +54,7 @@ namespace SunlessByteDecoder
                         BytesToJsonDirectory(AppDomain.CurrentDomain.BaseDirectory);
                     else if (Array.FindIndex(Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory), x => x.EndsWith(".json")) != -1)
                         JsonToBytesDirectory(AppDomain.CurrentDomain.BaseDirectory);
+                    else Error("Could not find valid files in directory!", ref success);
                 }
                 else Error("Arguments formatted incorrectly!", ref success);
             }
