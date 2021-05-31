@@ -9,3 +9,8 @@ If run inside a directory containing .bytes or.json files, it will serialize or 
 `--deserialize=<path_to_file>` - Accepts as input either a single .bytes file or a directory containing .bytes files. If a single file is passed, deserializes it to the corresponding .json file and creates said file next to the executable. If a directory is passed, the resulting .json files will be created in a new directory next to the executable.
 
 `--serialize=<path_to_file>` - Accepts as input either a single .json file or a directory containing .json files. If a single file is passed, serializes it to the corresponding .bytes file and creates said file next to the executable. If a directory is passed, the resulting .bytes files will be created in a new directory next to the executable.
+
+# Copyright
+All code in this repository is the intellectual property of Failbetter Games Ltd.
+
+Copyright (c) 2021, Failbetter Games Ltd.
