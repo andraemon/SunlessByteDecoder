@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ActClasses
 {
-    internal class ActQEffect : BaseQEffect
+    public class ActQEffect : BaseQEffect
     {
     }
 }

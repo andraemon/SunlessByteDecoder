@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ActClasses
 {
-    internal class Act : Entity
+    public class Act : Entity
     {
         public Act()
         {

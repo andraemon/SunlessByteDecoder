@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.MetaClasses
 {
-    internal enum PrivilegeLevel
+	public enum PrivilegeLevel
     {
 		Banned = -1,
 		User,

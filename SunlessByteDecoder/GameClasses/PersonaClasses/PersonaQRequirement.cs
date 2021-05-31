@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.PersonaClasses
 {
-    internal class PersonaQRequirement : BaseQRequirement
+    public class PersonaQRequirement : BaseQRequirement
     {
     }
 }

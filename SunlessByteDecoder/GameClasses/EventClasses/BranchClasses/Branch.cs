@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses.BranchClasses
 {
-    internal class Branch : EntityWithName
+    public class Branch : EntityWithName
     {
         public Branch()
         {

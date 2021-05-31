@@ -5,12 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace SunlessByteDecoder.BinarySerializer.PersonaSerializers
 {
     public class BinarySerializer_Persona
     {
-		internal static Persona Deserialize(BinaryReader bs)
+		public static Persona Deserialize(BinaryReader bs)
 		{
 			Persona persona = new Persona();
 			if (!bs.ReadBoolean())
@@ -56,7 +57,7 @@ namespace SunlessByteDecoder.BinarySerializer.PersonaSerializers
 			return persona;
 		}
 
-		internal static List<Persona> DeserializeCollection(BinaryReader bs)
+		public static List<Persona> DeserializeCollection(BinaryReader bs)
 		{
 			List<Persona> list = new List<Persona>();
 			int num = bs.ReadInt32();
@@ -65,6 +66,89 @@ namespace SunlessByteDecoder.BinarySerializer.PersonaSerializers
 				list.Add(Deserialize(bs));
 			}
 			return list;
+		}
+
+		public static void Serialize(BinaryWriter bs, Persona o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.QualitiesAffected != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesAffected.Count);
+				foreach (PersonaQEffect o2 in o.QualitiesAffected)
+				{
+					BinarySerializer_PersonaQEffect.Serialize(bs, o2);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesRequired != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesRequired.Count);
+				foreach (PersonaQRequirement o3 in o.QualitiesRequired)
+				{
+					BinarySerializer_PersonaQRequirement.Serialize(bs, o3);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Description != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Description);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.OwnerName != null)
+			{
+				bs.Write(true);
+				bs.Write(o.OwnerName);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Setting != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Setting.Serialize(bs, o.Setting);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			BinarySerializer_DateTime.Serialize(bs, o.DateTimeCreated);
+			if (o.Name != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Name);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
+		}
+
+		public static void SerializeCollection(BinaryWriter bs, IEnumerable<Persona> c)
+		{
+			bs.Write(c.Count());
+			foreach (Persona o in c)
+			{
+				Serialize(bs, o);
+			}
 		}
 	}
 }

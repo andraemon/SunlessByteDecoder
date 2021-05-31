@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.MetaClasses
 {
-    internal enum LoggedInVia
+    public enum LoggedInVia
     {
         Web,
         App

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses
 {
-    internal enum EventCategory
+	public enum EventCategory
     {
 		Unspecialised,
 		QuesticleStart,

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.MetaClasses
 {
-    internal enum PublishState
+	public enum PublishState
     {
 		UnPublished,
 		InProgress,

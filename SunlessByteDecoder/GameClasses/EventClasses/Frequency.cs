@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses
 {
-    internal enum Frequency
+    public enum Frequency
     {
         Sometimes,
         Rarely,

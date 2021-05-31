@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.MetaSerializers
 {
     public class BinarySerializer_ViaNetwork
     {
-        internal static ViaNetwork Deserialize(BinaryReader bs)
+        public static ViaNetwork Deserialize(BinaryReader bs)
         {
             return (ViaNetwork)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, ViaNetwork o)
+        {
+            bs.Write((int)o);
         }
     }
 }

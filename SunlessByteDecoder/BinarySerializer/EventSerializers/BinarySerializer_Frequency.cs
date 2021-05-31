@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers
 {
     public class BinarySerializer_Frequency
     {
-        internal static Frequency Deserialize(BinaryReader bs)
+        public static Frequency Deserialize(BinaryReader bs)
         {
             return (Frequency)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, Frequency o)
+        {
+            bs.Write((int)o);
         }
     }
 }

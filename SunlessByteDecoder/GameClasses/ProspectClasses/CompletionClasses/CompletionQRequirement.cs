@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ProspectClasses.CompletionClasses
 {
-    internal class CompletionQRequirement : BaseQRequirement
+    public class CompletionQRequirement : BaseQRequirement
     {
     }
 }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Linq;
 using SunlessByteDecoder.GameClasses.LocativeClasses;
 
 namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers
 {
     public class BinarySerializer_Domicile
     {
-        internal static Domicile Deserialize(BinaryReader bs)
+        public static Domicile Deserialize(BinaryReader bs)
         {
 			Domicile domicile = new Domicile();
 			if (!bs.ReadBoolean())
@@ -37,7 +38,7 @@ namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers
 			return domicile;
 		}
 
-		internal static List<Domicile> DeserializeCollection(BinaryReader bs)
+		public static List<Domicile> DeserializeCollection(BinaryReader bs)
 {
 			List<Domicile> list = new List<Domicile>();
 			int num = bs.ReadInt32();
@@ -46,6 +47,64 @@ namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers
 				list.Add(Deserialize(bs));
 			}
 			return list;
+		}
+
+		public static void Serialize(BinaryWriter bs, Domicile o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.Name != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Name);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Description != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Description);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.ImageName != null)
+			{
+				bs.Write(true);
+				bs.Write(o.ImageName);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.MaxHandSize);
+			bs.Write(o.DefenceBonus);
+			if (o.World != null)
+			{
+				bs.Write(true);
+				BinarySerializer_World.Serialize(bs, o.World);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
+		}
+
+		public static void SerializeCollection(BinaryWriter bs, IEnumerable<Domicile> c)
+		{
+			bs.Write(c.Count());
+			foreach (Domicile o in c)
+			{
+				Serialize(bs, o);
+			}
 		}
 	}
 }

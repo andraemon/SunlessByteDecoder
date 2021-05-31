@@ -8,7 +8,7 @@ namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers.ShopSerializer
 {
     public class BinarySerializer_Shop
     {
-		internal static Shop Deserialize(BinaryReader bs)
+		public static Shop Deserialize(BinaryReader bs)
 		{
 			Shop shop = new Shop();
 			if (!bs.ReadBoolean())
@@ -52,6 +52,80 @@ namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers.ShopSerializer
 			}
 			shop.Id = bs.ReadInt32();
 			return shop;
+		}
+
+		public static void Serialize(BinaryWriter bs, Shop o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.Name != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Name);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Image != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Image);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Description != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Description);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Ordering);
+			if (o.Exchange != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Exchange.Serialize(bs, o.Exchange);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Availabilities != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Availabilities.Count);
+				foreach (Availability o2 in o.Availabilities)
+				{
+					BinarySerializer_Availability.Serialize(bs, o2);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesRequired != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesRequired.Count);
+				foreach (ShopQRequirement o3 in o.QualitiesRequired)
+				{
+					BinarySerializer_ShopQRequirement.Serialize(bs, o3);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
 		}
 	}
 }

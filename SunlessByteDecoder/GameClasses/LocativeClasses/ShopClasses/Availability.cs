@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.LocativeClasses.ShopClasses
 {
-    internal class Availability : Entity
+	public class Availability : Entity
     {
 		public virtual Quality Quality { get; set; }
 		public virtual int Cost { get; set; }

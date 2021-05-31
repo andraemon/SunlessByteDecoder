@@ -12,7 +12,7 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers.BranchSerializers
 {
     public class BinarySerializer_Branch
     {
-		internal static Branch Deserialize(BinaryReader bs)
+		public static Branch Deserialize(BinaryReader bs)
 		{
 			Branch branch = new Branch();
 			if (!bs.ReadBoolean())
@@ -85,6 +85,145 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers.BranchSerializers
 			}
 			branch.Id = bs.ReadInt32();
 			return branch;
+		}
+
+		public static void Serialize(BinaryWriter bs, Branch o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.SuccessEvent != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Event.Serialize(bs, o.SuccessEvent);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.DefaultEvent != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Event.Serialize(bs, o.DefaultEvent);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.RareDefaultEvent != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Event.Serialize(bs, o.RareDefaultEvent);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.RareDefaultEventChance);
+			if (o.RareSuccessEvent != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Event.Serialize(bs, o.RareSuccessEvent);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.RareSuccessEventChance);
+			if (o.ParentEvent != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Event.Serialize(bs, o.ParentEvent);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesRequired != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesRequired.Count);
+				foreach (BranchQRequirement o2 in o.QualitiesRequired)
+				{
+					BinarySerializer_BranchQRequirement.Serialize(bs, o2);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Image != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Image);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Description != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Description);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.OwnerName != null)
+			{
+				bs.Write(true);
+				bs.Write(o.OwnerName);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			BinarySerializer_DateTime.Serialize(bs, o.DateTimeCreated);
+			bs.Write(o.CurrencyCost);
+			bs.Write(o.Archived);
+			if (o.RenameQualityCategory != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Category.Serialize(bs, o.RenameQualityCategory.Value);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.ButtonText != null)
+			{
+				bs.Write(true);
+				bs.Write(o.ButtonText);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Ordering);
+			if (o.Act != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Act.Serialize(bs, o.Act);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.ActionCost);
+			if (o.Name != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Name);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
 		}
 	}
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.LocativeClasses
 {
-    internal class Domicile : Entity
+    public class Domicile : Entity
     {
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }

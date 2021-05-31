@@ -8,7 +8,7 @@ namespace SunlessByteDecoder.BinarySerializer.ProspectSerializers.CompletionSeri
 {
     public class BinarySerializer_Completion
     {
-        internal static Completion Deserialize(BinaryReader bs)
+        public static Completion Deserialize(BinaryReader bs)
 		{
 			Completion completion = new Completion();
 			if (!bs.ReadBoolean())
@@ -47,6 +47,70 @@ namespace SunlessByteDecoder.BinarySerializer.ProspectSerializers.CompletionSeri
 			}
 			completion.Id = bs.ReadInt32();
 			return completion;
+		}
+
+		public static void Serialize(BinaryWriter bs, Completion o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.Prospect != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Prospect.Serialize(bs, o.Prospect);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Description != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Description);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.SatisfactionMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.SatisfactionMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesAffected != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesAffected.Count);
+				foreach (CompletionQEffect o2 in o.QualitiesAffected)
+				{
+					BinarySerializer_CompletionQEffect.Serialize(bs, o2);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesRequired != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesRequired.Count);
+				foreach (CompletionQRequirement o3 in o.QualitiesRequired)
+				{
+					BinarySerializer_CompletionQRequirement.Serialize(bs, o3);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
 		}
 	}
 }

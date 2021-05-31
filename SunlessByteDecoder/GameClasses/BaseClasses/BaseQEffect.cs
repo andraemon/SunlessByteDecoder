@@ -5,7 +5,7 @@ using SunlessByteDecoder.GameClasses.QualityClasses;
 
 namespace SunlessByteDecoder.GameClasses.BaseClasses
 {
-    internal class BaseQEffect : BaseQAssocWithLevel
+    public class BaseQEffect : BaseQAssocWithLevel
     {
         public virtual bool ForceEquip { get; set; }
         public virtual string OnlyIfNoMoreThanAdvanced { get; set; }

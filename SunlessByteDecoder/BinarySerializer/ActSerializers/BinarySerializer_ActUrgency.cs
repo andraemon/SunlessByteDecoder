@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.ActSerializers
 {
     public class BinarySerializer_ActUrgency
     {
-        internal static ActUrgency Deserialize(BinaryReader bs)
+        public static ActUrgency Deserialize(BinaryReader bs)
         {
             return (ActUrgency)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, ActUrgency o)
+        {
+            bs.Write((int)o);
         }
     }
 }

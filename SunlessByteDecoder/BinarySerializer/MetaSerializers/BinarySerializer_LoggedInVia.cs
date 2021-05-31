@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.MetaSerializers
 {
     public class BinarySerializer_LoggedInVia
     {
-        internal static LoggedInVia Deserialize(BinaryReader bs)
+        public static LoggedInVia Deserialize(BinaryReader bs)
         {
             return (LoggedInVia)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, LoggedInVia o)
+        {
+            bs.Write((int)o);
         }
     }
 }

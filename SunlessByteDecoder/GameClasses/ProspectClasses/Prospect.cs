@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ProspectClasses
 {
-    internal class Prospect : EntityWithName
+	public class Prospect : EntityWithName
     {
 		public Prospect()
 		{

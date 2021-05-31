@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ProspectClasses
 {
-    internal class ProspectQRequirement : BaseQRequirement
+	public class ProspectQRequirement : BaseQRequirement
     {
 		public virtual Prospect Prospect { get; set; }
 		public string CustomLockedMessage { get; set; }

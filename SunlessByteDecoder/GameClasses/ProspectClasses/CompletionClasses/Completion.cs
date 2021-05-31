@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ProspectClasses.CompletionClasses
 {
-    internal class Completion : Entity
+    public class Completion : Entity
     {
         public virtual Prospect Prospect { get; set; }
         public virtual string Description { get; set; }

@@ -11,7 +11,7 @@ namespace SunlessByteDecoder.BinarySerializer.ActSerializers
 {
     public class BinarySerializer_Act
     {
-		internal static Act Deserialize(BinaryReader bs)
+		public static Act Deserialize(BinaryReader bs)
 		{
 			Act act = new Act();
 			if (!bs.ReadBoolean())
@@ -139,6 +139,241 @@ namespace SunlessByteDecoder.BinarySerializer.ActSerializers
 			}
 			act.Id = bs.ReadInt32();
 			return act;
+		}
+
+		public static void Serialize(BinaryWriter bs, Act o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.Name != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Name);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.ImageName != null)
+			{
+				bs.Write(true);
+				bs.Write(o.ImageName);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			BinarySerializer_InteractionType.Serialize(bs, o.InteractionType);
+			if (o.Tag != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Tag);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			BinarySerializer_ActUrgency.Serialize(bs, o.Urgency);
+			BinarySerializer_InvitationDomain.Serialize(bs, o.InvitationDomain);
+			BinarySerializer_InvitationRestriction.Serialize(bs, o.InvitationRestriction);
+			if (o.InviteMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.InviteMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.TwitterInviteMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.TwitterInviteMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.AcceptMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.AcceptMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.CooperativeCompletionMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.CooperativeCompletionMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.WinMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.WinMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.LoseMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.LoseMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.InviterModifier != null)
+			{
+				bs.Write(true);
+				bs.Write(o.InviterModifier);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.IsUnique);
+			if (o.AssociatedQuality != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Quality.Serialize(bs, o.AssociatedQuality);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Cooldown != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Cooldown.Value);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.SocialEvent != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Event.Serialize(bs, o.SocialEvent);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.ChallengeOn != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Quality.Serialize(bs, o.ChallengeOn);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.ParticipantsRequired);
+			if (o.QualitiesAffectedOnTarget != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesAffectedOnTarget.Count);
+				foreach (ActQEffect o2 in o.QualitiesAffectedOnTarget)
+				{
+					BinarySerializer_ActQEffect.Serialize(bs, o2);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesAffectedOnVictor != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesAffectedOnVictor.Count);
+				foreach (ActQEffectOnVictor o3 in o.QualitiesAffectedOnVictor)
+				{
+					BinarySerializer_ActQEffectOnVictor.Serialize(bs, o3);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesRequired != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesRequired.Count);
+				foreach (ActQRequirement o4 in o.QualitiesRequired)
+				{
+					BinarySerializer_ActQRequirement.Serialize(bs, o4);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesRequiredOnInviter != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesRequiredOnInviter.Count);
+				foreach (ActInviterQRequirement o5 in o.QualitiesRequiredOnInviter)
+				{
+					BinarySerializer_ActInviterQRequirement.Serialize(bs, o5);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesAffectedOnInviterOnRejection != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesAffectedOnInviterOnRejection.Count);
+				foreach (ActOnRejectQEffect o6 in o.QualitiesAffectedOnInviterOnRejection)
+				{
+					BinarySerializer_ActOnRejectQEffect.Serialize(bs, o6);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.SSAbilityType != null)
+			{
+				bs.Write(true);
+				bs.Write(o.SSAbilityType);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.SSAbilityAnimation != null)
+			{
+				bs.Write(true);
+				bs.Write(o.SSAbilityAnimation);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.World != null)
+			{
+				bs.Write(true);
+				BinarySerializer_World.Serialize(bs, o.World);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
 		}
 	}
 }

@@ -5,7 +5,7 @@ using SunlessByteDecoder.GameClasses.QualityClasses;
 
 namespace SunlessByteDecoder.GameClasses.BaseClasses
 {
-    internal class BaseQAssoc : Entity
+    public class BaseQAssoc : Entity
     {
         public virtual Quality AssociatedQuality { get; set; }
     }

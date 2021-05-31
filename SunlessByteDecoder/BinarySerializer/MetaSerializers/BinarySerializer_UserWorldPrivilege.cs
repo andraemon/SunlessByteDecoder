@@ -9,7 +9,7 @@ namespace SunlessByteDecoder.BinarySerializer.MetaSerializers
 {
     public class BinarySerializer_UserWorldPrivilege
     {
-		internal static UserWorldPrivilege Deserialize(BinaryReader bs)
+		public static UserWorldPrivilege Deserialize(BinaryReader bs)
 		{
 			UserWorldPrivilege userWorldPrivilege = new UserWorldPrivilege();
 			if (!bs.ReadBoolean())
@@ -27,6 +27,36 @@ namespace SunlessByteDecoder.BinarySerializer.MetaSerializers
 			}
 			userWorldPrivilege.Id = bs.ReadInt32();
 			return userWorldPrivilege;
+		}
+
+		public static void Serialize(BinaryWriter bs, UserWorldPrivilege o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.World != null)
+			{
+				bs.Write(true);
+				BinarySerializer_World.Serialize(bs, o.World);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			BinarySerializer_PrivilegeLevel.Serialize(bs, o.PrivilegeLevel);
+			if (o.User != null)
+			{
+				bs.Write(true);
+				BinarySerializer_User.Serialize(bs, o.User);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
 		}
 	}
 }

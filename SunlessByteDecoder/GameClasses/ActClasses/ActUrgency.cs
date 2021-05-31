@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ActClasses
 {
-    internal enum ActUrgency
+    public enum ActUrgency
     {
         Normal,
         Compelling

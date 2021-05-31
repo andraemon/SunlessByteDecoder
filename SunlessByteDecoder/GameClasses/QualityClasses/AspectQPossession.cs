@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.QualityClasses
 {
-    internal class AspectQPossession : BaseQPossession
+    public class AspectQPossession : BaseQPossession
     {
         public virtual Quality Quality { get; set; }
     }

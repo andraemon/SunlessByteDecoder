@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses
 {
-    internal enum Urgency
+    public enum Urgency
     {
         Low = -1,
         Normal,

@@ -9,7 +9,7 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers.LivingStorySerial
 {
     public class BinarySerializer_LivingStory
     {
-		internal static LivingStory Deserialize(BinaryReader bs)
+		public static LivingStory Deserialize(BinaryReader bs)
 		{
 			LivingStory livingStory = new LivingStory();
 			if (!bs.ReadBoolean())
@@ -71,6 +71,118 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers.LivingStorySerial
 			}
 			livingStory.Id = bs.ReadInt32();
 			return livingStory;
+		}
+
+		public static void Serialize(BinaryWriter bs, LivingStory o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.ImageName != null)
+			{
+				bs.Write(true);
+				bs.Write(o.ImageName);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.World != null)
+			{
+				bs.Write(true);
+				BinarySerializer_World.Serialize(bs, o.World);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Name != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Name);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Message != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Message);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.TwitterMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.TwitterMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.Tag != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Tag);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.SubscriptionMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.SubscriptionMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.AfterHours);
+			bs.Write(o.Monetizable);
+			bs.Write(o.NexCost);
+			if (o.LinkedLivingStory != null)
+			{
+				bs.Write(true);
+				BinarySerializer_LivingStory.Serialize(bs, o.LinkedLivingStory);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesAffected != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesAffected.Count);
+				foreach (LivingStoryQEffect o2 in o.QualitiesAffected)
+				{
+					BinarySerializer_LivingStoryQEffect.Serialize(bs, o2);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.QualitiesRequired != null)
+			{
+				bs.Write(true);
+				bs.Write(o.QualitiesRequired.Count);
+				foreach (LivingStoryQRequirement o3 in o.QualitiesRequired)
+				{
+					BinarySerializer_LivingStoryQRequirement.Serialize(bs, o3);
+				}
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
 		}
 	}
 }

@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.QualitySerializers
 {
     public class BinarySerializer_DifficultyTestType
     {
-        internal static DifficultyTestType Deserialize(BinaryReader bs)
+        public static DifficultyTestType Deserialize(BinaryReader bs)
         {
             return (DifficultyTestType)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, DifficultyTestType o)
+        {
+            bs.Write((int)o);
         }
     }
 }

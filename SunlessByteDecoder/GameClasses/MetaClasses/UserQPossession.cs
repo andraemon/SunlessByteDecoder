@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.MetaClasses
 {
-    internal class UserQPossession : BaseQPossession
+    public class UserQPossession : BaseQPossession
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.MetaClasses
 {
-    internal class User : Entity
+    public class User : Entity
     {
         public User()
         {

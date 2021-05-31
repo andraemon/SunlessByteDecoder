@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers
 {
     public class BinarySerializer_Urgency
     {
-        internal static Urgency Deserialize(BinaryReader bs)
+        public static Urgency Deserialize(BinaryReader bs)
         {
             return (Urgency)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, Urgency o)
+        {
+            bs.Write((int)o);
         }
     }
 }

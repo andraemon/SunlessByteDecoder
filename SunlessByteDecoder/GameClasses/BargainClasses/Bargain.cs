@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.BargainClasses
 {
-    internal class Bargain : EntityWithName
+    public class Bargain : EntityWithName
     {
 		public virtual World World { get; set; }
 		public virtual string Tags { get; set; }

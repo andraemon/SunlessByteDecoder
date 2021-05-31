@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.QualityClasses
 {
-    internal class Quality : EntityWithName
+    public class Quality : EntityWithName
     {
         public Quality()
         {

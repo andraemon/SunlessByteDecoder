@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.MetaSerializers
 {
     public class BinarySerializer_PublishState
     {
-        internal static PublishState Deserialize(BinaryReader bs)
+        public static PublishState Deserialize(BinaryReader bs)
         {
             return (PublishState)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, PublishState o)
+        {
+            bs.Write((int)o);
         }
     }
 }

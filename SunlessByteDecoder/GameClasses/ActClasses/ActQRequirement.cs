@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ActClasses
 {
-    internal class ActQRequirement : BaseQRequirement
+    public class ActQRequirement : BaseQRequirement
     {
 		public ActQRequirement()
 		{

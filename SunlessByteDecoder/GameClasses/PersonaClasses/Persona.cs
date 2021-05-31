@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.PersonaClasses
 {
-    internal class Persona : EntityWithName
+    public class Persona : EntityWithName
     {
         public Persona()
         {

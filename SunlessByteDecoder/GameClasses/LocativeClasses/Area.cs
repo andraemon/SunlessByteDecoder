@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.LocativeClasses
 {
-    internal class Area : EntityWithName
+	public class Area : EntityWithName
     {
         public virtual string Description { get; set; }
         public virtual string ImageName { get; set; }

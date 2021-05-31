@@ -9,7 +9,7 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers.BranchSerializers
 {
     public class BinarySerializer_BranchQRequirement
     {
-		internal static BranchQRequirement Deserialize(BinaryReader bs)
+		public static BranchQRequirement Deserialize(BinaryReader bs)
 		{
 			BranchQRequirement branchQRequirement = new BranchQRequirement();
 			if (!bs.ReadBoolean())
@@ -56,6 +56,100 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers.BranchSerializers
 			}
 			branchQRequirement.Id = bs.ReadInt32();
 			return branchQRequirement;
+		}
+
+		public static void Serialize(BinaryWriter bs, BranchQRequirement o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.DifficultyLevel != null)
+			{
+				bs.Write(true);
+				bs.Write(o.DifficultyLevel.Value);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.DifficultyAdvanced != null)
+			{
+				bs.Write(true);
+				bs.Write(o.DifficultyAdvanced);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.VisibleWhenRequirementFailed);
+			if (o.CustomLockedMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.CustomLockedMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.CustomUnlockedMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.CustomUnlockedMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.IsCostRequirement);
+			if (o.MinLevel != null)
+			{
+				bs.Write(true);
+				bs.Write(o.MinLevel.Value);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.MaxLevel != null)
+			{
+				bs.Write(true);
+				bs.Write(o.MaxLevel.Value);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.MinAdvanced != null)
+			{
+				bs.Write(true);
+				bs.Write(o.MinAdvanced);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.MaxAdvanced != null)
+			{
+				bs.Write(true);
+				bs.Write(o.MaxAdvanced);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.AssociatedQuality != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Quality.Serialize(bs, o.AssociatedQuality);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
 		}
 	}
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses
 {
-    internal class Deck : Entity
+    public class Deck : Entity
     {
         public virtual World World { get; set; }
 		public virtual string Name { get; set; }

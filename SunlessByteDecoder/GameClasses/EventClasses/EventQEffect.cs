@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses
 {
-    internal class EventQEffect : BaseQEffect
+    public class EventQEffect : BaseQEffect
     {
         public virtual int? Priority { get; set; }
     }

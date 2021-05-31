@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.QualityClasses
 {
-    internal enum Nature
+    public enum Nature
     {
         Unspecified,
         Status,

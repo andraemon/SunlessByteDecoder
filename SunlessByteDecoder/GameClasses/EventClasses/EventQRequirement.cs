@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses
 {
-    class EventQRequirement : BaseQRequirement
+    public class EventQRequirement : BaseQRequirement
     {
     }
 }

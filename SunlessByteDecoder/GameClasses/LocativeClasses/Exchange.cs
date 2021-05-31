@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.LocativeClasses
 {
-    internal class Exchange : EntityWithName
+	public class Exchange : EntityWithName
 	{
 		public override string Name { get; set; }
 		public virtual string Image { get; set; }

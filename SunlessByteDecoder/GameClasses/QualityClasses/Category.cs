@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.QualityClasses
 {
-    internal enum Category
+	public enum Category
     {
 		Academic = 16000,
 		Accomplishment = 5050,

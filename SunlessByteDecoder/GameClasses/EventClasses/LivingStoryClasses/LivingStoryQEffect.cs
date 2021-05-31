@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses.LivingStoryClasses
 {
-    internal class LivingStoryQEffect : BaseQEffect
+    public class LivingStoryQEffect : BaseQEffect
     {
         public virtual LivingStory LivingStory { get; set; }
     }

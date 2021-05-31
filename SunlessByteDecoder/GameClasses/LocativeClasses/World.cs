@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.LocativeClasses
 {
-    internal class World : Entity
+	public class World : Entity
     {
 		public World()
 		{

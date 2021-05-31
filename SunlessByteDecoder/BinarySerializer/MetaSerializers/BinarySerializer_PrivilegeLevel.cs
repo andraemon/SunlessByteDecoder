@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.MetaSerializers
 {
     public class BinarySerializer_PrivilegeLevel
     {
-        internal static PrivilegeLevel Deserialize(BinaryReader bs)
+        public static PrivilegeLevel Deserialize(BinaryReader bs)
         {
             return (PrivilegeLevel)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, PrivilegeLevel o)
+        {
+            bs.Write((int)o);
         }
     }
 }

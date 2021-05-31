@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses.BranchClasses
 {
-    internal class BranchQRequirement : BaseQRequirement
+    public class BranchQRequirement : BaseQRequirement
     {
 		public virtual int? DifficultyLevel { get; set; }
 		public virtual string DifficultyAdvanced { get; set; }

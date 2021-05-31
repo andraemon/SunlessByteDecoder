@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.LocativeClasses.ShopClasses
 {
-    internal class ShopQRequirement : BaseQRequirement
+    public class ShopQRequirement : BaseQRequirement
     {
     }
 }

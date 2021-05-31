@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.ActClasses
 {
-    internal enum InteractionType
+    public enum InteractionType
     {
         Cooperative,
         Competitive

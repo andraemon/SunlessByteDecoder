@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.QualityClasses
 {
-    internal enum QualityAllowedOn
+	public enum QualityAllowedOn
     {
 		Unspecified,
 		Character,

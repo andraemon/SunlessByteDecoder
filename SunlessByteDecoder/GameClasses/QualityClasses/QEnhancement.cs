@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.QualityClasses
 {
-    internal class QEnhancement : BaseQAssocWithLevel
+    public class QEnhancement : BaseQAssocWithLevel
     {
     }
 }

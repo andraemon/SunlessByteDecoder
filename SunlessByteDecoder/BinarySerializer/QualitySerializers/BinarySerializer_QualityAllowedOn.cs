@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.QualitySerializers
 {
     public class BinarySerializer_QualityAllowedOn
     {
-        internal static QualityAllowedOn Deserialize(BinaryReader bs)
+        public static QualityAllowedOn Deserialize(BinaryReader bs)
         {
             return (QualityAllowedOn)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, QualityAllowedOn o)
+        {
+            bs.Write((int)o);
         }
     }
 }

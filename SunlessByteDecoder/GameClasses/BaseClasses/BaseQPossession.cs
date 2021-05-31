@@ -5,7 +5,7 @@ using SunlessByteDecoder.GameClasses.QualityClasses;
 
 namespace SunlessByteDecoder.GameClasses.BaseClasses
 {
-    class BaseQPossession : BaseQAssocWithLevel
+    public class BaseQPossession : BaseQAssocWithLevel
     {
         public virtual int XP { get; set; }
         public virtual int EffectiveLevelModifier { get; set; }

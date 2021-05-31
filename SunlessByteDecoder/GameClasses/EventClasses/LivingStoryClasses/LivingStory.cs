@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses.LivingStoryClasses
 {
-    internal class LivingStory : Entity
+    public class LivingStory : Entity
     {
         public LivingStory()
         {

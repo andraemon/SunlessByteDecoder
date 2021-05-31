@@ -4,12 +4,13 @@ using System.Text;
 using System.IO;
 using SunlessByteDecoder.GameClasses.LocativeClasses;
 using SunlessByteDecoder.BinarySerializer.QualitySerializers;
+using System.Linq;
 
 namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers
 {
     public class BinarySerializer_Area
     {
-        internal static Area Deserialize(BinaryReader bs)
+        public static Area Deserialize(BinaryReader bs)
         {
             Area area = new Area();
             if (!bs.ReadBoolean())
@@ -51,7 +52,7 @@ namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers
             return area;
         }
 
-        internal static List<Area> DeserializeCollection(BinaryReader bs)
+        public static List<Area> DeserializeCollection(BinaryReader bs)
         {
             List<Area> list = new List<Area>();
             int num = bs.ReadInt32();
@@ -61,5 +62,86 @@ namespace SunlessByteDecoder.BinarySerializer.LocativeSerializers
             }
             return list;
         }
-    }
+
+		public static void Serialize(BinaryWriter bs, Area o)
+		{
+			if (o == null)
+			{
+				bs.Write(false);
+				return;
+			}
+			bs.Write(true);
+			if (o.Description != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Description);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.ImageName != null)
+			{
+				bs.Write(true);
+				bs.Write(o.ImageName);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			if (o.World != null)
+			{
+				bs.Write(true);
+				BinarySerializer_World.Serialize(bs, o.World);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.MarketAccessPermitted);
+			if (o.MoveMessage != null)
+			{
+				bs.Write(true);
+				bs.Write(o.MoveMessage);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.HideName);
+			bs.Write(o.RandomPostcard);
+			bs.Write(o.MapX);
+			bs.Write(o.MapY);
+			if (o.UnlocksWithQuality != null)
+			{
+				bs.Write(true);
+				BinarySerializer_Quality.Serialize(bs, o.UnlocksWithQuality);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.ShowOps);
+			bs.Write(o.PremiumSubRequired);
+			if (o.Name != null)
+			{
+				bs.Write(true);
+				bs.Write(o.Name);
+			}
+			else
+			{
+				bs.Write(false);
+			}
+			bs.Write(o.Id);
+		}
+
+		public static void SerializeCollection(BinaryWriter bs, IEnumerable<Area> c)
+		{
+			bs.Write(c.Count());
+			foreach (Area o in c)
+			{
+				Serialize(bs, o);
+			}
+		}
+	}
 }

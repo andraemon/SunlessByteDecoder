@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.ActSerializers
 {
     public class BinarySerializer_InvitationRestriction
     {
-        internal static InvitationRestriction Deserialize(BinaryReader bs)
+        public static InvitationRestriction Deserialize(BinaryReader bs)
         {
             return (InvitationRestriction)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, InvitationRestriction o)
+        {
+            bs.Write((int)o);
         }
     }
 }

@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.MetaSerializers
 {
     public class BinarySerializer_Genre
     {
-        internal static Genre Deserialize(BinaryReader bs)
+        public static Genre Deserialize(BinaryReader bs)
         {
             return (Genre)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, Genre o)
+        {
+            bs.Write((int)o);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses.LivingStoryClasses
 {
-    internal class LivingStoryQRequirement : BaseQRequirement
+    public class LivingStoryQRequirement : BaseQRequirement
     {
     }
 }

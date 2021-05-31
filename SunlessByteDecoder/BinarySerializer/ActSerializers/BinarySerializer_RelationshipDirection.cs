@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.ActSerializers
 {
     public class BinarySerializer_RelationshipDirection
     {
-        internal static RelationshipDirection Deserialize(BinaryReader bs)
+        public static RelationshipDirection Deserialize(BinaryReader bs)
         {
             return (RelationshipDirection)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, RelationshipDirection o)
+        {
+            bs.Write((int)o);
         }
     }
 }

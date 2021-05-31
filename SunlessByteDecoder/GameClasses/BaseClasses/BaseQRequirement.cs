@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.BaseClasses
 {
-    internal class BaseQRequirement : BaseQAssoc
+    public class BaseQRequirement : BaseQAssoc
     {
         public virtual int? MinLevel { get; set; }
         public virtual int? MaxLevel { get; set; }

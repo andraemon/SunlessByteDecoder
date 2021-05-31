@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.PersonaClasses
 {
-    internal class PersonaQEffect : BaseQEffect
+    public class PersonaQEffect : BaseQEffect
     {
     }
 }

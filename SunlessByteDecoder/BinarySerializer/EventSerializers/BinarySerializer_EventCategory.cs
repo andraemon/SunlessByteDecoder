@@ -8,9 +8,14 @@ namespace SunlessByteDecoder.BinarySerializer.EventSerializers
 {
     public class BinarySerializer_EventCategory
     {
-        internal static EventCategory Deserialize(BinaryReader bs)
+        public static EventCategory Deserialize(BinaryReader bs)
         {
             return (EventCategory)bs.ReadInt32();
+        }
+
+        public static void Serialize(BinaryWriter bs, EventCategory o)
+        {
+            bs.Write((int)o);
         }
     }
 }

@@ -11,7 +11,7 @@ using SunlessByteDecoder.GameClasses.EventClasses.BranchClasses;
 
 namespace SunlessByteDecoder.GameClasses.EventClasses
 {
-    internal class Event : EntityWithName
+	public class Event : EntityWithName
     {
         public Event()
         {

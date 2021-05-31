@@ -7,9 +7,13 @@ namespace SunlessByteDecoder.BinarySerializer.GeneralSerializers
 {
     public class BinarySerializer_DateTime
     {
-        internal static DateTime Deserialize(BinaryReader bs)
+        public static DateTime Deserialize(BinaryReader bs)
         {
             return default;
+        }
+
+        public static void Serialize(BinaryWriter bs, DateTime o)
+        {
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SunlessByteDecoder.GameClasses.LocativeClasses.ShopClasses
 {
-    internal class Shop : Entity
+    public class Shop : Entity
     {
         public Shop()
         {
