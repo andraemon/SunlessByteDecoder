@@ -30,17 +30,17 @@ namespace SunlessByteDecoder
             {
                 if (args.Length == 1)
                 {
-                    if (args[0].StartsWith("--deserialize="))
+                    if (args[0].StartsWith("--decode="))
                     {
-                        if (args[0].EndsWith(".bytes")) BytesToJsonFile(args[0][14..]);
+                        if (args[0].EndsWith(".bytes")) BytesToJsonFile(args[0][9..]);
                         else if (args[0].EndsWith(".json")) Error("Wrong file extension!", ref success);
-                        else BytesToJsonDirectory(args[0][14..]);
+                        else BytesToJsonDirectory(args[0][9..]);
                     }
-                    else if (args[0].StartsWith("--serialize="))
+                    else if (args[0].StartsWith("--encode="))
                     {
-                        if (args[0].EndsWith(".json")) { }
+                        if (args[0].EndsWith(".json")) JsonToBytesFile(args[0][9..]);
                         else if (args[0].EndsWith(".bytes")) Error("Wrong file extension!", ref success);
-                        else JsonToBytesDirectory(args[0][12..]);
+                        else JsonToBytesDirectory(args[0][9..]);
                     }
                     else if (args[0].EndsWith(".bytes")) BytesToJsonFile(args[0]);
                     else if (args[0].EndsWith(".json")) JsonToBytesFile(args[0]);
